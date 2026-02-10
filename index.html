@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Placement / Internship Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Internship Tracker</h1>
+    </header>
+
+    <div class="container">
+        <!-- Summary Section -->
+        <section id="summary-section">
+            <h2>Dashboard Overview</h2>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <h3>Total Applications</h3>
+                    <p id="total-apps">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Interviews</h3>
+                    <p id="total-interviews">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Offers</h3>
+                    <p id="total-offers">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Rejections</h3>
+                    <p id="total-rejections">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Application Form -->
+        <section id="add-application-section">
+            <h2>Add New Application</h2>
+            <form id="application-form">
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" required placeholder="e.g. Microsoft">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role / Position</label>
+                    <input type="text" id="role" required placeholder="e.g. Frontend Intern">
+                </div>
+                <div class="form-group">
+                    <label for="stage">Current Stage</label>
+                    <select id="stage" required>
+                        <option value="Applied">Applied</option>
+                        <option value="OA">Online Assessment (OA)</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="result">Outcome</label>
+                    <select id="result" required>
+                        <option value="Pending">Pending</option>
+                        <option value="Cleared">Cleared</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date Applied</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" id="add-btn">Add Record</button>
+            </form>
+        </section>
+
+        <!-- Applications List -->
+        <section id="applications-list-section">
+            <h2>Tracked Applications</h2>
+            <div class="table-responsive">
+                <table id="applications-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Stage</th>
+                            <th>Outcome</th>
+                            <th>Applied On</th>
+                            <th style="width: 50px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="applications-body">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
