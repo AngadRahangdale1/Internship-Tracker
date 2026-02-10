@@ -8,29 +8,62 @@
 </head>
 <body>
     <header>
-        <h1>Internship Tracker</h1>
+        <div class="header-content">
+            <h1>Internship Tracker</h1>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
     </header>
 
     <div class="container">
-        <!-- Summary Section -->
-        <section id="summary-section">
-            <h2>Dashboard Overview</h2>
-            <div class="summary-cards">
-                <div class="summary-card">
-                    <h3>Total Applications</h3>
-                    <p id="total-apps">0</p>
+        <!-- Summary & Analytics Section -->
+        <section id="dashboard-section">
+            <div class="dashboard-grid">
+                <div class="stats-column">
+                    <h2>Dashboard Overview</h2>
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h3>Total Applications</h3>
+                            <p id="total-apps">0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Interviews</h3>
+                            <p id="total-interviews">0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Offers</h3>
+                            <p id="total-offers">0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Rejections</h3>
+                            <p id="total-rejections">0</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Management Tools -->
+                    <div class="tools-area">
+                        <h3>Data Management</h3>
+                        <div class="tools-buttons">
+                            <button id="btn-export" class="btn-secondary">
+                                <span>Download CSV</span>
+                            </button>
+                            <label for="file-upload" class="btn-secondary file-upload-btn">
+                                <span>Import JSON</span>
+                                <input type="file" id="file-upload" accept=".json" hidden>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="summary-card">
-                    <h3>Interviews</h3>
-                    <p id="total-interviews">0</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Offers</h3>
-                    <p id="total-offers">0</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Rejections</h3>
-                    <p id="total-rejections">0</p>
+                
+                <div class="chart-column">
+                    <h2>Analytics</h2>
+                    <div class="chart-container">
+                        <canvas id="analyticsChart"></canvas>
+                        <div id="chart-legend" class="chart-legend"></div>
+                        <div class="empty-state-chart" id="empty-chart-msg">Add applications to see analytics</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -75,7 +108,12 @@
 
         <!-- Applications List -->
         <section id="applications-list-section">
-            <h2>Tracked Applications</h2>
+            <div class="section-header">
+                <h2>Tracked Applications</h2>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search companies or roles...">
+                </div>
+            </div>
             <div class="table-responsive">
                 <table id="applications-table">
                     <thead>
@@ -95,6 +133,9 @@
             </div>
         </section>
     </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
 
     <script src="script.js"></script>
 </body>
